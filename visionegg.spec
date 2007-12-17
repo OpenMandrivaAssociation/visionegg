@@ -11,7 +11,6 @@ Patch0:	   visionegg-mandriva.patch
 License:   LGPL
 Group:     Sciences/Other
 Url:       http://www.visionegg.org/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:  python >= 2.1
 Requires:  python-numeric >= 21.0
 Requires:  python-numarray 
