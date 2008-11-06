@@ -1,25 +1,22 @@
 %define name visionegg
-%define version 1.0
-%define release %mkrel 8
+%define version 1.1.1
+%define release %mkrel 1
 
 Summary:   Python package for producing stimuli for vision research experiments
 Name:      %{name}
 Version:   %{version}
 Release:   %{release}
-Source0:   %{name}-%{version}.tar.bz2
-Patch0:	   visionegg-mandriva.patch
+Source0:   %{name}-%{version}.tar.lzma
 License:   LGPL
 Group:     Sciences/Other
 Url:       http://www.visionegg.org/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-Requires:  python >= 2.1
-Requires:  python-numeric >= 21.0
-Requires:  python-numarray 
+Requires:  python-numpy
 Requires:  python-imaging >= 1.1.2
 Requires:  python-opengl
 Requires:  pygame
-BuildRequires: python-devel >= 2.1
-BuildRequires: libx11-devel, GL-devel, python-numeric-devel >= 21.0
+BuildRequires: python-setuptools, libx11-devel, GL-devel, python-numpy-devel
+%py_requires -d
 
 %description 
 The Vision Egg uses Python and OpenGL to provide a powerful, flexible,
@@ -41,25 +38,22 @@ This package contains sample programs demonstrating the use of VisionEgg.
 
 %prep
 %setup -q
-%patch -p0
 
 %build
 CFLAGS="-L/usr/X11R6/%_lib" %__python setup.py build 
 
 %install
 %__rm -rf %{buildroot}
-%__python setup.py install --skip-build --root=%{buildroot} --record=INSTALLED_FILES
-%__cp -rp ./demo %{buildroot}%py_libdir/VisionEgg/demo
+%__python setup.py install --skip-build --root=%{buildroot} --record=FILELIST
+%__cp -rp ./demo %{buildroot}%{py_sitedir}/VisionEgg/
 
 %clean
 %__rm -rf %{buildroot}
 
-%files -f INSTALLED_FILES
+%files -f FILELIST
 %defattr(-,root,root)
 %doc README.txt README-DEMOS.txt CHANGELOG.txt LICENSE.txt README-BINARY-DEMOS.txt doc/
 
 %files -n %{name}-demos
 %defattr(-,root,root)
-%py_libdir/VisionEgg/demo
-
-
+%py_sitedir/VisionEgg/demo
