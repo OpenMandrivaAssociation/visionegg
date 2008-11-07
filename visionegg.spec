@@ -11,6 +11,7 @@ License:   LGPL
 Group:     Sciences/Other
 Url:       http://www.visionegg.org/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+Obsoletes: visionegg-demos
 Requires:  python-numpy
 Requires:  python-imaging >= 1.1.2
 Requires:  python-opengl
@@ -27,15 +28,6 @@ number of functions for moving numeric data, images, movies, text, and
 3D objects to and from your computer's video card and making use of 
 features like perspective distortion. 
 
-%package demos
-
-Summary:  Demo programs for VisionEgg
-Group:	  Sciences/Other
-Requires: %{name}
-
-%description demos
-This package contains sample programs demonstrating the use of VisionEgg.
-
 %prep
 %setup -q
 
@@ -45,15 +37,10 @@ CFLAGS="-L/usr/X11R6/%_lib" %__python setup.py build
 %install
 %__rm -rf %{buildroot}
 %__python setup.py install --skip-build --root=%{buildroot} --record=FILELIST
-%__cp -rp ./demo %{buildroot}%{py_sitedir}/VisionEgg/
 
 %clean
 %__rm -rf %{buildroot}
 
 %files -f FILELIST
 %defattr(-,root,root)
-%doc README.txt README-DEMOS.txt CHANGELOG.txt LICENSE.txt README-BINARY-DEMOS.txt doc/
-
-%files -n %{name}-demos
-%defattr(-,root,root)
-%py_sitedir/VisionEgg/demo
+%doc README.txt README-DEMOS.txt CHANGELOG.txt LICENSE.txt README-BINARY-DEMOS.txt doc/ demo/
