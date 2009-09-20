@@ -1,6 +1,6 @@
 %define name visionegg
 %define version 1.1.1
-%define release %mkrel 2
+%define release %mkrel 3
 
 Summary:   Python package for producing stimuli for vision research experiments
 Name:      %{name}
