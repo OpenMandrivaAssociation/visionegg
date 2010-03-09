@@ -1,22 +1,22 @@
-%define name visionegg
-%define version 1.1.1
-%define release %mkrel 3
+%define name	visionegg
+%define version 1.2.1
+%define release %mkrel 1
 
-Summary:   Python package for producing stimuli for vision research experiments
-Name:      %{name}
-Version:   %{version}
-Release:   %{release}
-Source0:   %{name}-%{version}.tar.lzma
-License:   LGPL
-Group:     Sciences/Other
-Url:       http://www.visionegg.org/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-Obsoletes: visionegg-demos
-Requires:  python-numpy
-Requires:  python-imaging >= 1.1.2
-Requires:  python-opengl
-Requires:  pygame
-BuildRequires: python-setuptools, libx11-devel, GL-devel, python-numpy-devel
+Summary:	Python library for producing stimuli for vision research experiments
+Name:		%{name}
+Version:	%{version}
+Release:	%{release}
+Source0:	%{name}-%{version}.tar.gz
+License:	LGPL
+Group:		Sciences/Other
+Url:		http://www.visionegg.org/
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+Obsoletes:	visionegg-demos
+Requires:	python-numpy >= 1.0
+Requires:	python-imaging >= 1.1.2
+Requires:	python-opengl >= 2.0
+Requires:	pygame >= 1.5.3
+BuildRequires:	python-setuptools, libx11-devel, GL-devel, python-numpy-devel >= 1.0
 %py_requires -d
 
 %description 
@@ -43,4 +43,4 @@ CFLAGS="-L/usr/X11R6/%_lib" %__python setup.py build
 
 %files -f FILELIST
 %defattr(-,root,root)
-%doc README.txt README-DEMOS.txt CHANGELOG.txt LICENSE.txt README-BINARY-DEMOS.txt doc/ demo/
+%doc *.txt doc/ demo/
