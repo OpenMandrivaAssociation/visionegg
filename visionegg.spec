@@ -1,6 +1,6 @@
 %define name	visionegg
 %define version 1.2.1
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary:	Python library for producing stimuli for vision research experiments
 Name:		%{name}
@@ -17,7 +17,7 @@ Requires:	python-imaging >= 1.1.2
 Requires:	python-opengl >= 2.0
 Requires:	pygame >= 1.5.3
 BuildRequires:	python-setuptools, libx11-devel, GL-devel, python-numpy-devel >= 1.0
-%py_requires -d
+BuildRequires:	python-devel
 
 %description 
 The Vision Egg uses Python and OpenGL to provide a powerful, flexible,
@@ -36,7 +36,7 @@ CFLAGS="-L/usr/X11R6/%_lib" %__python setup.py build
 
 %install
 %__rm -rf %{buildroot}
-%__python setup.py install --skip-build --root=%{buildroot} --record=FILELIST
+PYTHONDONTWRITEBYTECODE= %__python setup.py install --skip-build --root=%{buildroot} --record=FILELIST
 
 %clean
 %__rm -rf %{buildroot}
