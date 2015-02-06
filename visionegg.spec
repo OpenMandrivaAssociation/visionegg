@@ -1,7 +1,7 @@
 Summary:	Python library for producing stimuli for vision research experiments
 Name:		visionegg
 Version:	1.2.1
-Release:	4
+Release:	5
 Source0:	%{name}-%{version}.tar.gz
 License:	LGPL
 Group:		Sciences/Other
