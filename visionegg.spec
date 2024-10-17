@@ -5,7 +5,7 @@ Release:	5
 Source0:	%{name}-%{version}.tar.gz
 License:	LGPL
 Group:		Sciences/Other
-Url:		http://www.visionegg.org/
+Url:		https://www.visionegg.org/
 Obsoletes:	visionegg-demos
 Requires:	python-numpy >= 1.0
 Requires:	python-imaging >= 1.1.2
